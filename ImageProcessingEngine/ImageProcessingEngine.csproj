@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D023015A-68AE-4DDC-B1CA-ECCF6128793E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImageProcessingEngine</RootNamespace>
+    <AssemblyName>ImageProcessingEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\IMultiPixelAction.cs" />
+    <Compile Include="Actions\IPixelChannelAction.cs" />
+    <Compile Include="Actions\IPixelPercentageAction.cs" />
+    <Compile Include="Actions\ISinglePixelAction.cs" />
+    <Compile Include="ARGBChannel.cs" />
+    <Compile Include="CommandSetProcessor.cs" />
+    <Compile Include="Commands\CommandLexer.cs" />
+    <Compile Include="Commands\FilterCommandParser.cs" />
+    <Compile Include="Commands\InvalidFormatException.cs" />
+    <Compile Include="Commands\ProcessorCommand.cs" />
+    <Compile Include="Commands\RegexExtensions.cs" />
+    <Compile Include="FilterMode.cs" />
+    <Compile Include="ImageExtensions.cs" />
+    <Compile Include="ProcessorMode.cs" />
+    <Compile Include="EnumUtil.cs" />
+    <Compile Include="Filters\Channel\ChannelAverageFilter.cs" />
+    <Compile Include="Filters\Channel\ChannelStandardDeviationFilter.cs" />
+    <Compile Include="Filters\Channel\ChannelVarianceFilter.cs" />
+    <Compile Include="Filters\Channel\ChannelZeroFilter.cs" />
+    <Compile Include="Filters\Percentage\DarkFilter.cs" />
+    <Compile Include="Filters\Percentage\LightFilter.cs" />
+    <Compile Include="Commands\CommandSetParser.cs" />
+    <Compile Include="Filters\Single\BlueFilter.cs" />
+    <Compile Include="Filters\Multi\BlurFilter.cs" />
+    <Compile Include="Filters\Channel\ChannelInvertFilter.cs" />
+    <Compile Include="Filters\Channel\ChannelMaxFilter.cs" />
+    <Compile Include="ProcessorRunner.cs" />
+    <Compile Include="Processors\BinaryProcessor.cs" />
+    <Compile Include="BitmapExtensions.cs" />
+    <Compile Include="Processors\ChannelProcessor.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="Processors\HistogramProcessor.cs" />
+    <Compile Include="Processors\MultiProcessor.cs" />
+    <Compile Include="Processors\PercentageProcessor.cs" />
+    <Compile Include="Processors\ImageProcessorRunner.cs" />
+    <Compile Include="Processors\SingleProcessor.cs" />
+    <Compile Include="Filters\Multi\FuzzyGrayscaleFilter.cs" />
+    <Compile Include="Filters\Single\GrayscaleFilter.cs" />
+    <Compile Include="Filters\Single\GreenFilter.cs" />
+    <Compile Include="Filters\Single\NegativeFilter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Filters\Single\RedFilter.cs" />
+    <Compile Include="Filters\Single\StandardDeviationFilter.cs" />
+    <Compile Include="Filters\Single\VarianceFilter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{8B43D61F-9453-4874-BF15-A389F09C587A}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
